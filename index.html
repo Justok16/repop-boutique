@@ -3,30 +3,37 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>RePOP boutique — jouets & pop culture à Ruffec</title>
-<meta name="description" content="RePOP boutique à Ruffec (16) : Funko Pop, cartes Pokémon, jouets rétro et vintage, mangas, sacs Loungefly. Neuf et seconde main. Ouvert du lundi au samedi, 24 place d'Armes.">
+<title>RePOP boutique — magasin de jouets & pop culture à Ruffec (Nord Charente)</title>
+<meta name="description" content="Magasin de jouets & pop culture à Ruffec, en Nord Charente : Funko Pop, cartes Pokémon, jouets rétro & vintage, mangas, sacs Loungefly. Neuf et seconde main, à 30 min de Civray, Chef-Boutonne, Mansle et Villefagnan. Ouvert du lundi au samedi.">
 <link rel="canonical" href="https://repop-boutique.vercel.app/">
 <meta name="robots" content="index, follow">
 <meta name="theme-color" content="#12923a">
 <meta name="author" content="RePOP boutique">
-<meta name="geo.placename" content="Ruffec">
+<meta name="keywords" content="magasin de jouets Ruffec, Funko Pop Ruffec, cartes Pokémon Ruffec, jouets vintage Charente, jouets d'occasion Nord Charente, mangas Ruffec, boutique pop culture Civray Chef-Boutonne Mansle">
+<meta name="geo.placename" content="Ruffec, Charente">
 <meta name="geo.region" content="FR-16">
 <meta name="geo.position" content="46.0278639;0.1989911">
+<meta name="ICBM" content="46.0278639, 0.1989911">
 
-<meta property="og:type" content="website">
+<meta property="og:type" content="business.business">
 <meta property="og:site_name" content="RePOP boutique">
-<meta property="og:title" content="RePOP boutique — jouets & pop culture à Ruffec">
-<meta property="og:description" content="RePOP boutique à Ruffec (16) : Funko Pop, cartes Pokémon, jouets rétro et vintage, mangas, sacs Loungefly. Neuf et seconde main. Ouvert du lundi au samedi, 24 place d'Armes.">
+<meta property="og:title" content="RePOP boutique — magasin de jouets & pop culture à Ruffec (Nord Charente)">
+<meta property="og:description" content="Magasin de jouets & pop culture à Ruffec, en Nord Charente : Funko Pop, cartes Pokémon, jouets rétro & vintage, mangas, sacs Loungefly. Neuf et seconde main, à 30 min de Civray, Chef-Boutonne, Mansle et Villefagnan. Ouvert du lundi au samedi.">
 <meta property="og:url" content="https://repop-boutique.vercel.app/">
 <meta property="og:image" content="https://repop-boutique.vercel.app/assets/shop.jpg">
 <meta property="og:image:width" content="1200">
 <meta property="og:image:height" content="805">
 <meta property="og:image:alt" content="La devanture de RePOP boutique, 24 place d'Armes à Ruffec">
 <meta property="og:locale" content="fr_FR">
+<meta property="business:contact_data:street_address" content="24 place d'Armes">
+<meta property="business:contact_data:locality" content="Ruffec">
+<meta property="business:contact_data:postal_code" content="16700">
+<meta property="business:contact_data:country_name" content="France">
+<meta property="business:contact_data:phone_number" content="+33677037878">
 
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:title" content="RePOP boutique — jouets & pop culture à Ruffec">
-<meta name="twitter:description" content="RePOP boutique à Ruffec (16) : Funko Pop, cartes Pokémon, jouets rétro et vintage, mangas, sacs Loungefly. Neuf et seconde main. Ouvert du lundi au samedi, 24 place d'Armes.">
+<meta name="twitter:title" content="RePOP boutique — magasin de jouets & pop culture à Ruffec (Nord Charente)">
+<meta name="twitter:description" content="Magasin de jouets & pop culture à Ruffec, en Nord Charente : Funko Pop, cartes Pokémon, jouets rétro & vintage, mangas, sacs Loungefly. Neuf et seconde main, à 30 min de Civray, Chef-Boutonne, Mansle et Villefagnan. Ouvert du lundi au samedi.">
 <meta name="twitter:image" content="https://repop-boutique.vercel.app/assets/shop.jpg">
 
 <link rel="icon" href="/favicon.ico" sizes="32x32">
@@ -402,6 +409,8 @@
   }
   .foot .socials a:hover { background: var(--yellow); }
   .foot .meta { font-family: "DM Mono", monospace; font-size: 12px; color: var(--muted); }
+  .visit-copy .zone { font-size: 13.5px; margin-top: 12px; }
+  .visit-copy .zone b { color: var(--ink); }
 
   @media (prefers-reduced-motion: reduce) { .marquee div { animation: none; } }
   :focus-visible { outline: 3px solid var(--ink); outline-offset: 3px; }
@@ -411,13 +420,17 @@
 {
   "@context": "https://schema.org",
   "@type": "ToyStore",
+  "@id": "https://repop-boutique.vercel.app/#shop",
   "name": "RePOP boutique",
-  "description": "RePOP boutique à Ruffec (16) : Funko Pop, cartes Pokémon, jouets rétro et vintage, mangas, sacs Loungefly. Neuf et seconde main. Ouvert du lundi au samedi, 24 place d'Armes.",
+  "description": "Magasin de jouets & pop culture à Ruffec, en Nord Charente : Funko Pop, cartes Pokémon, jouets rétro & vintage, mangas, sacs Loungefly. Neuf et seconde main, à 30 min de Civray, Chef-Boutonne, Mansle et Villefagnan. Ouvert du lundi au samedi.",
   "image": "https://repop-boutique.vercel.app/assets/shop.jpg",
+  "logo": "https://repop-boutique.vercel.app/icon-512.png",
   "url": "https://repop-boutique.vercel.app/",
   "telephone": "+33677037878",
   "email": "repop.boutique@gmail.com",
   "priceRange": "€–€€",
+  "currenciesAccepted": "EUR",
+  "paymentAccepted": "Espèces, Carte bancaire",
   "address": {
     "@type": "PostalAddress",
     "streetAddress": "24 place d'Armes",
@@ -432,6 +445,86 @@
     "longitude": 0.1989911
   },
   "hasMap": "https://www.google.com/maps/place/RePOP/@46.0278639,0.1989911,17z",
+  "areaServed": [
+    {
+      "@type": "City",
+      "name": "Ruffec"
+    },
+    {
+      "@type": "City",
+      "name": "Civray"
+    },
+    {
+      "@type": "City",
+      "name": "Chef-Boutonne"
+    },
+    {
+      "@type": "City",
+      "name": "Mansle"
+    },
+    {
+      "@type": "City",
+      "name": "Villefagnan"
+    },
+    {
+      "@type": "City",
+      "name": "Aigre"
+    },
+    {
+      "@type": "City",
+      "name": "Verteuil-sur-Charente"
+    },
+    {
+      "@type": "City",
+      "name": "Nanteuil-en-Vallée"
+    },
+    {
+      "@type": "City",
+      "name": "Charroux"
+    },
+    {
+      "@type": "City",
+      "name": "Sauzé-Vaussais"
+    },
+    {
+      "@type": "City",
+      "name": "Chaunay"
+    },
+    {
+      "@type": "City",
+      "name": "Luxé"
+    },
+    {
+      "@type": "City",
+      "name": "Aunac-sur-Charente"
+    },
+    {
+      "@type": "City",
+      "name": "Aunac"
+    },
+    {
+      "@type": "City",
+      "name": "Champagne-Mouton"
+    },
+    {
+      "@type": "City",
+      "name": "Val-de-Bonnieure"
+    },
+    {
+      "@type": "City",
+      "name": "Brioux-sur-Boutonne"
+    },
+    {
+      "@type": "GeoCircle",
+      "geoMidpoint": {
+        "@type": "GeoCoordinates",
+        "latitude": 46.0278639,
+        "longitude": 0.1989911
+      },
+      "geoRadius": 30000
+    }
+  ],
+  "keywords": "magasin de jouets Ruffec, pop culture, Funko Pop, cartes Pokémon, jouets vintage, jouets d'occasion, mangas, sacs Loungefly, Nord Charente, Sud Vienne, Ruffécois",
   "openingHoursSpecification": [
     {
       "@type": "OpeningHoursSpecification",
@@ -602,6 +695,7 @@
           <span class="tag-label" style="color:var(--green-deep)">Passer nous voir</span>
           <h2>Au c&#339;ur de Ruffec, <span class="u">place d'Armes</span></h2>
           <p>La boutique est en plein centre, face &#224; la place, entre la mercerie et la pizzeria. Poussez la porte pour fouiller les rayons : c'est l&#224; qu'on trouve les meilleures surprises.</p>
+          <p class="zone">On voit venir des client&#183;e&#183;s de tout le <b>Nord Charente</b> et du sud de la Vienne : Civray, Chef-Boutonne, Mansle, Villefagnan, Aigre, Verteuil-sur-Charente, Nanteuil-en-Vall&#233;e, Charroux, Sauz&#233;-Vaussais, Chaunay&#8230; tous &#224; moins de 30&#160;min.</p>
           <span class="owners"><i aria-hidden="true"></i>Laura &amp; Anthony vous accueillent</span>
           <div class="stars">Not&#233; <b>5,0&nbsp;&#9733;</b> sur Google &#183; 21 avis</div>
           <div class="cta"><a class="btn go" href="https://www.google.com/maps/place/RePOP/@46.0278639,0.1989911,17z/data=!3m1!4b1!4m6!3m5!1s0x47fe1132deb40e01:0x61e619c7f6a83cda!8m2!3d46.0278639!4d0.1989911!16s%2Fg%2F11whb8r5g1" target="_blank" rel="noopener">Ouvrir l'itin&#233;raire</a></div>
@@ -633,7 +727,7 @@
       <a href="tel:+33677037878">Appeler</a>
       <a href="mailto:repop.boutique@gmail.com">&#201;crire</a>
     </div>
-    <div class="meta">RePOP boutique &#183; 24 place d'Armes, 16700 Ruffec &#183; jouets &amp; pop culture</div>
+    <div class="meta">RePOP boutique &#183; 24 place d'Armes, 16700 Ruffec &#183; Nord Charente / Sud Vienne</div>
   </div>
 </footer>
 
