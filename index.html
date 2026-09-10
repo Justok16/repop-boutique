@@ -1,0 +1,585 @@
+<title>RePOP boutique</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fredoka:wght@500;600;700&family=Hanken+Grotesk:wght@400;500;600;700;800&family=DM+Mono:wght@400;500&display=swap">
+
+<style>
+  :root {
+    /* pulled from the RePOP logo: warm brown ink, cream, sky, candy pops */
+    --paper: #fbf3dd;
+    --paper-2: #fffaec;
+    --ink: #3a2a1d;
+    --muted: #7a6a58;
+    --line: #3a2a1d;
+    --sky: #8fd2ec;
+    --green: #58a544;
+    --green-deep: #3f8a32;
+    --purple: #8b62b8;
+    --yellow: #f2c230;
+    --blue: #2e9fd4;
+    --red: #e04a35;
+    --halftone: rgba(58,42,29,.16);
+    --offset: 6px;
+  }
+
+  :root:not([data-theme="light"]) { color-scheme: light; }
+
+  @media (prefers-color-scheme: dark) {
+    :root:not([data-theme="light"]) {
+      color-scheme: dark;
+      --paper: #211a12;
+      --paper-2: #2b2318;
+      --ink: #f6ecd7;
+      --muted: #b6a488;
+      --line: #4d3f2c;
+      --sky: #2b5a70;
+      --green: #6cc255;
+      --green-deep: #56ab42;
+      --purple: #ad86d6;
+      --yellow: #ffd24a;
+      --blue: #46b4e6;
+      --red: #ff6a53;
+      --halftone: rgba(246,236,215,.14);
+    }
+  }
+  :root[data-theme="dark"] {
+    color-scheme: dark;
+    --paper: #211a12;
+    --paper-2: #2b2318;
+    --ink: #f6ecd7;
+    --muted: #b6a488;
+    --line: #4d3f2c;
+    --sky: #2b5a70;
+    --green: #6cc255;
+    --green-deep: #56ab42;
+    --purple: #ad86d6;
+    --yellow: #ffd24a;
+    --blue: #46b4e6;
+    --red: #ff6a53;
+    --halftone: rgba(246,236,215,.14);
+  }
+
+  * { box-sizing: border-box; }
+
+  body {
+    margin: 0;
+    background: var(--paper);
+    color: var(--ink);
+    font-family: "Hanken Grotesk", "Segoe UI", system-ui, sans-serif;
+    font-size: 17px;
+    line-height: 1.62;
+    -webkit-font-smoothing: antialiased;
+  }
+  img { display: block; max-width: 100%; }
+  a { color: inherit; }
+  .wrap { width: 100%; max-width: 1120px; margin: 0 auto; padding: 0 22px; }
+
+  h1, h2, h3, .display {
+    font-family: "Fredoka", "Hanken Grotesk", sans-serif;
+    font-weight: 700;
+    margin: 0;
+    line-height: 1.04;
+    letter-spacing: -0.01em;
+  }
+  .tag-label {
+    font-family: "DM Mono", ui-monospace, monospace;
+    font-size: 11.5px; letter-spacing: .18em; text-transform: uppercase;
+  }
+
+  /* ---------------- top bar ---------------- */
+  .topbar {
+    position: sticky; top: 0; z-index: 50;
+    background: var(--ink);
+    border-bottom: 3px solid var(--line);
+  }
+  .topbar .row {
+    display: flex; align-items: center; justify-content: space-between;
+    gap: 14px; padding: 9px 0;
+  }
+  .brand {
+    font-family: "Fredoka", sans-serif; font-weight: 700; font-size: 21px;
+    text-decoration: none; letter-spacing: .01em; white-space: nowrap;
+  }
+  .brand .a { color: var(--purple); }
+  .brand .b { color: var(--green); }
+  .brand .c { color: var(--yellow); }
+  .brand .d { color: var(--blue); }
+  .brand .e { color: var(--red); }
+  .navlinks { display: flex; align-items: center; gap: 3px; flex-wrap: wrap; justify-content: flex-end; }
+  .navlinks a {
+    font-size: 13px; font-weight: 600; text-decoration: none; color: var(--paper);
+    padding: 7px 10px; border-radius: 6px; white-space: nowrap; opacity: .82;
+  }
+  .navlinks a:hover { opacity: 1; background: #ffffff1f; }
+  .navlinks a.call {
+    opacity: 1; background: var(--green); color: #fff;
+    border: 2px solid var(--paper); font-weight: 700;
+  }
+  .navlinks a.call:hover { background: var(--yellow); color: var(--ink); }
+
+  /* ---------------- hero ---------------- */
+  .hero {
+    position: relative; overflow: hidden;
+    border-bottom: 3px solid var(--line);
+    background: var(--sky);
+    padding: 40px 0 46px;
+  }
+  .hero .sun {
+    position: absolute; left: 50%; top: -40%;
+    width: 120vmax; height: 120vmax; translate: -50% 0;
+    background: repeating-conic-gradient(from 0deg, #ffffff2e 0 8deg, transparent 8deg 16deg);
+    z-index: 0;
+  }
+  .hero .dots {
+    position: absolute; inset: 0; z-index: 0;
+    background-image: radial-gradient(#ffffff3d 2px, transparent 2.3px);
+    background-size: 22px 22px;
+    mask-image: linear-gradient(to bottom, #000 0 45%, transparent 88%);
+  }
+  .hero .cloud {
+    position: absolute; z-index: 1;
+    width: 128px; height: 42px; border-radius: 40px;
+    background: var(--paper-2); border: 3px solid var(--line);
+  }
+  .hero .cloud::before, .hero .cloud::after {
+    content: ""; position: absolute; bottom: 8px;
+    background: var(--paper-2); border: 3px solid var(--line); border-radius: 50%;
+  }
+  .hero .cloud::before { width: 44px; height: 44px; left: 20px; }
+  .hero .cloud::after { width: 60px; height: 60px; right: 24px; bottom: 6px; }
+  .hero .cloud i {
+    position: absolute; inset: 3px 6px auto 6px; height: 22px;
+    background: var(--paper-2); border-radius: 40px; z-index: 1;
+  }
+  .hero .cloud.c1 { left: 5%; top: 14%; }
+  .hero .cloud.c2 { right: 8%; top: 24%; scale: .8; }
+  .hero .cloud.c3 { right: 3%; bottom: 12%; scale: 1.15; }
+  @media (max-width: 760px) { .hero .cloud { display: none; } }
+
+  .hero .inner { position: relative; z-index: 3; text-align: center; }
+  .hero .logo-wrap {
+    width: 300px; max-width: 62vw; aspect-ratio: 1 / 1;
+    margin: 0 auto; border-radius: 50%; overflow: hidden;
+    border: 4px solid var(--line);
+    box-shadow: var(--offset) var(--offset) 0 var(--line);
+  }
+  .hero .logo-wrap img {
+    width: 100%; height: 100%; object-fit: cover; display: block;
+  }
+  .hero .sub {
+    max-width: 26ch; margin: 24px auto 0;
+    font-family: "Fredoka", sans-serif; font-weight: 600;
+    font-size: clamp(19px, 3vw, 27px); color: var(--ink);
+  }
+  .cta-row { display: flex; flex-wrap: wrap; gap: 13px; justify-content: center; margin-top: 22px; }
+  .btn {
+    font-family: "Fredoka", sans-serif; font-weight: 700; font-size: 15px;
+    text-decoration: none; padding: 12px 20px;
+    border: 3px solid var(--line);
+    box-shadow: var(--offset) var(--offset) 0 var(--line);
+    background: var(--paper-2); color: var(--ink); border-radius: 12px;
+    transition: transform .1s ease, box-shadow .1s ease;
+  }
+  .btn:hover { transform: translate(3px,3px); box-shadow: 2px 2px 0 var(--line); }
+  .btn.go { background: var(--green); color: #fff; }
+  .btn.alt { background: var(--red); color: #fff; }
+
+  /* ---------------- marquee ---------------- */
+  .marquee {
+    background: var(--ink); color: var(--paper);
+    border-bottom: 3px solid var(--line);
+    overflow: hidden; white-space: nowrap;
+  }
+  .marquee div {
+    display: inline-block; padding: 9px 0;
+    font-family: "Fredoka", sans-serif; font-weight: 600; font-size: 13px; letter-spacing: .04em;
+    animation: slide 26s linear infinite;
+  }
+  .marquee span { padding: 0 20px; }
+  .marquee .s1 { color: var(--yellow); }
+  .marquee .s2 { color: var(--green); }
+  .marquee .s3 { color: var(--blue); }
+  .marquee .s4 { color: var(--red); }
+  .marquee .s5 { color: var(--purple); }
+  @keyframes slide { from { transform: translateX(0); } to { transform: translateX(-50%); } }
+
+  /* ---------------- storefront ---------------- */
+  .shot { position: relative; border-bottom: 3px solid var(--line); background: var(--ink); }
+  .shot img { width: 100%; height: clamp(280px, 48vw, 560px); object-fit: cover; object-position: center 40%; }
+  .shot .stamp {
+    position: absolute; right: clamp(14px,4vw,46px); top: clamp(14px,4vw,40px);
+    background: var(--red); color: #fff; font-family: "Fredoka", sans-serif; font-weight: 700;
+    font-size: clamp(13px,2.4vw,19px); padding: 9px 15px; rotate: 5deg;
+    border: 3px solid #fff; box-shadow: var(--offset) var(--offset) 0 #0006; border-radius: 10px;
+  }
+  .shot .plate {
+    position: absolute; left: 0; bottom: 0; width: 100%; padding: 44px 22px 16px;
+    background: linear-gradient(to top, #000000c9, transparent); color: #fff;
+  }
+  .shot .plate b { font-family: "Fredoka", sans-serif; font-weight: 700; font-size: clamp(16px,3vw,24px); }
+  .shot .plate span { display: block; font-family: "DM Mono", monospace; font-size: 12px; letter-spacing: .12em; text-transform: uppercase; opacity: .85; margin-top: 3px; }
+
+  /* ---------------- sections ---------------- */
+  section { padding: 64px 0; border-bottom: 3px solid var(--line); }
+  .sec-head { margin-bottom: 30px; }
+  .sec-head .tag-label { color: var(--green-deep); }
+  .sec-head h2 { font-size: clamp(28px, 5.2vw, 46px); margin-top: 10px; text-wrap: balance; }
+  .sec-head h2 .u { box-shadow: inset 0 -.26em 0 var(--yellow); }
+  .sec-head p { color: var(--muted); max-width: 52ch; margin: 13px 0 0; font-size: 16px; }
+
+  .bento { display: grid; grid-template-columns: repeat(4, 1fr); gap: 14px; }
+  @media (max-width: 900px) { .bento { grid-template-columns: repeat(2, 1fr); } }
+  @media (max-width: 520px) { .bento { grid-template-columns: 1fr; } }
+  .tile {
+    position: relative; overflow: hidden;
+    border: 3px solid var(--line); border-radius: 16px;
+    box-shadow: var(--offset) var(--offset) 0 var(--line);
+    padding: 20px 18px 22px; min-height: 158px;
+    display: flex; flex-direction: column; gap: 6px;
+    color: #fff;
+  }
+  .tile::after {
+    content: ""; position: absolute; right: -18px; bottom: -18px;
+    width: 92px; height: 92px; border-radius: 50%;
+    background-image: radial-gradient(#ffffff40 2.4px, transparent 2.6px);
+    background-size: 12px 12px;
+  }
+  .tile .n { font-family: "DM Mono", monospace; font-size: 12px; letter-spacing: .14em; opacity: .9; }
+  .tile h3 { font-size: clamp(17px, 2.3vw, 21px); }
+  .tile p { margin: 0; font-size: 14px; line-height: 1.5; color: #ffffffe6; }
+  .tile.big { grid-column: span 2; }
+  @media (max-width: 520px) { .tile.big { grid-column: span 1; } }
+  .tile.g { background: var(--green); }
+  .tile.y { background: var(--yellow); color: var(--ink); }
+  .tile.y p { color: var(--ink); }
+  .tile.y::after { background-image: radial-gradient(#3a2a1d33 2.4px, transparent 2.6px); }
+  .tile.b { background: var(--blue); }
+  .tile.p { background: var(--purple); }
+  .tile.r { background: var(--red); }
+
+  /* ---------------- diaporama ---------------- */
+  .slideshow { margin-top: 28px; }
+  .frame {
+    position: relative;
+    border: 3px solid var(--line); border-radius: 16px;
+    box-shadow: var(--offset) var(--offset) 0 var(--line);
+    background: var(--ink); overflow: hidden;
+  }
+  .slides { position: relative; aspect-ratio: 16 / 10; }
+  .slides figure {
+    position: absolute; inset: 0; margin: 0;
+    opacity: 0; transition: opacity .7s ease; pointer-events: none;
+  }
+  .slides figure.on { opacity: 1; pointer-events: auto; }
+  .slides img { width: 100%; height: 100%; object-fit: cover; display: block; }
+  .slides figcaption {
+    position: absolute; left: 0; right: 0; bottom: 0;
+    padding: 26px 18px 14px;
+    background: linear-gradient(to top, #000000cc, transparent);
+    color: #fff; font-family: "DM Mono", monospace; font-size: 12.5px; letter-spacing: .04em;
+  }
+  .counter {
+    position: absolute; right: 12px; top: 12px; z-index: 4;
+    background: var(--yellow); color: var(--ink);
+    font-family: "Fredoka", sans-serif; font-weight: 700; font-size: 12px;
+    padding: 4px 10px; border: 2.5px solid var(--line); border-radius: 8px; rotate: 4deg;
+  }
+  .nav {
+    position: absolute; top: 50%; translate: 0 -50%; z-index: 4;
+    width: 44px; height: 44px; border-radius: 50%;
+    border: 3px solid var(--line); background: var(--paper-2); color: var(--ink);
+    font-size: 20px; line-height: 1; cursor: pointer;
+    box-shadow: 3px 3px 0 var(--line);
+    display: grid; place-items: center;
+  }
+  .nav:hover { background: var(--green); color: #fff; }
+  .nav.prev { left: 10px; }
+  .nav.next { right: 10px; }
+  .dots { display: flex; gap: 9px; justify-content: center; margin-top: 18px; }
+  .dots button {
+    width: 13px; height: 13px; border-radius: 50%; padding: 0; cursor: pointer;
+    border: 2.5px solid var(--line); background: var(--paper);
+  }
+  .dots button[aria-current="true"] { background: var(--green); }
+
+  .events { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; }
+  @media (max-width: 820px) { .events { grid-template-columns: 1fr; } }
+  .ev {
+    border: 3px solid var(--line); background: var(--paper-2); border-radius: 14px;
+    box-shadow: var(--offset) var(--offset) 0 var(--line); padding: 20px 18px 22px;
+  }
+  .ev .burst {
+    display: inline-block; background: var(--red); color: #fff; border-radius: 8px;
+    font-family: "Fredoka", sans-serif; font-weight: 700; font-size: 11px; letter-spacing: .05em;
+    padding: 5px 10px; margin-bottom: 12px; rotate: -3deg;
+  }
+  .ev:nth-child(2) .burst { background: var(--blue); }
+  .ev:nth-child(3) .burst { background: var(--purple); }
+  .ev h3 { font-size: 18px; margin-bottom: 6px; }
+  .ev p { margin: 0; font-size: 14px; color: var(--muted); }
+
+  .visit-grid { display: grid; grid-template-columns: 1.05fr .95fr; gap: 30px; align-items: start; }
+  @media (max-width: 820px) { .visit-grid { grid-template-columns: 1fr; } }
+  .visit-copy h2 { font-size: clamp(26px, 4.6vw, 40px); }
+  .visit-copy p { color: var(--muted); }
+  .owners { display: inline-flex; align-items: center; gap: 10px; margin-top: 16px; font-family: "Fredoka", sans-serif; font-weight: 600; font-size: 15px; }
+  .owners i { width: 26px; height: 26px; background: var(--green); border: 3px solid var(--line); border-radius: 50%; flex: none; }
+  .stars { margin-top: 14px; font-family: "DM Mono", monospace; font-size: 13px; color: var(--muted); }
+  .stars b { color: var(--green-deep); font-family: "Fredoka", sans-serif; font-weight: 700; }
+  .visit-copy .btn { margin-top: 20px; }
+
+  .ticket {
+    background: var(--paper-2); border: 3px solid var(--line); border-radius: 14px;
+    box-shadow: var(--offset) var(--offset) 0 var(--line); overflow: hidden;
+    font-family: "DM Mono", ui-monospace, monospace; font-size: 13.5px;
+  }
+  .ticket .head {
+    background: var(--ink); color: var(--paper);
+    font-family: "Fredoka", sans-serif; font-weight: 700; font-size: 15px; letter-spacing: .04em;
+    padding: 12px 20px;
+  }
+  .ticket .body { padding: 20px; }
+  .ticket dl { margin: 0; display: grid; gap: 14px; }
+  .ticket .line { display: grid; grid-template-columns: 78px 1fr; gap: 12px; }
+  .ticket dt { color: var(--muted); text-transform: uppercase; font-size: 11px; letter-spacing: .1em; padding-top: 2px; }
+  .ticket dd { margin: 0; }
+  .ticket dd a { text-decoration: none; box-shadow: inset 0 -.14em 0 var(--green); }
+  .ticket .note { margin: 0 20px 20px; padding-top: 14px; border-top: 2px dashed var(--line); font-size: 11px; color: var(--muted); line-height: 1.55; }
+
+  footer { padding: 40px 0 54px; }
+  .foot { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 16px; }
+  .foot .socials { display: flex; gap: 10px; flex-wrap: wrap; }
+  .foot .socials a {
+    font-family: "Fredoka", sans-serif; font-weight: 700; font-size: 12.5px; text-decoration: none;
+    padding: 9px 14px; border: 3px solid var(--line); border-radius: 10px;
+    box-shadow: 4px 4px 0 var(--line); color: var(--ink); background: var(--paper-2);
+  }
+  .foot .socials a:hover { background: var(--yellow); }
+  .foot .meta { font-family: "DM Mono", monospace; font-size: 12px; color: var(--muted); }
+
+  @media (prefers-reduced-motion: reduce) { .marquee div { animation: none; } }
+  :focus-visible { outline: 3px solid var(--ink); outline-offset: 3px; }
+</style>
+
+<header class="topbar">
+  <div class="wrap row">
+    <a class="brand" href="#top"><span class="a">R</span><span class="b">e</span><span class="c">P</span><span class="d">O</span><span class="e">P</span></a>
+    <nav class="navlinks">
+      <a href="#selection">La s&#233;lection</a>
+      <a href="#events">&#201;v&#233;nements</a>
+      <a href="#visite">Passer nous voir</a>
+      <a href="https://www.instagram.com/repop.boutique" target="_blank" rel="noopener">Instagram</a>
+      <a class="call" href="tel:+33677037878">06 77 03 78 78</a>
+    </nav>
+  </div>
+</header>
+
+<main id="top">
+  <section class="hero">
+    <div class="sun" aria-hidden="true"></div>
+    <div class="dots" aria-hidden="true"></div>
+    <div class="cloud c1" aria-hidden="true"><i></i></div>
+    <div class="cloud c2" aria-hidden="true"><i></i></div>
+    <div class="cloud c3" aria-hidden="true"><i></i></div>
+    <div class="wrap inner">
+      <div class="logo-wrap"><img src="assets/logo.jpg" alt="Logo RePOP boutique : jouets, pop culture, seconde main, neuf et vintage &#8212; 24 place d'Armes, 16700 Ruffec, du lundi au samedi de 10h &#224; 19h"></div>
+      <p class="sub">Pour les enfants &#8212; ou pour retomber en enfance.</p>
+      <div class="cta-row">
+        <a class="btn go" href="#visite">Passer nous voir</a>
+        <a class="btn alt" href="https://www.instagram.com/repop.boutique" target="_blank" rel="noopener">Suivre @repop.boutique</a>
+      </div>
+    </div>
+  </section>
+
+  <div class="marquee" aria-hidden="true">
+    <div>
+      <span class="s1">FUNKO POP</span><span class="s2">CARTES POK&#201;MON</span><span class="s3">JOUETS VINTAGE</span><span class="s4">MANGAS</span><span class="s5">SACS LOUNGEFLY</span><span class="s1">SECONDE MAIN</span><span class="s2">NEUF</span><span class="s3">TOURNOIS</span>
+      <span class="s1">FUNKO POP</span><span class="s2">CARTES POK&#201;MON</span><span class="s3">JOUETS VINTAGE</span><span class="s4">MANGAS</span><span class="s5">SACS LOUNGEFLY</span><span class="s1">SECONDE MAIN</span><span class="s2">NEUF</span><span class="s3">TOURNOIS</span>
+    </div>
+  </div>
+
+  <div class="shot">
+    <img src="assets/shop.jpg" alt="La devanture de RePOP boutique, 24 place d'Armes &#224; Ruffec : enseigne color&#233;e et vitrine remplie de jouets et de figurines" width="1400" height="939">
+    <div class="stamp">Ouvert lun&#8211;sam</div>
+    <div class="plate"><b>24 place d'Armes</b><span>Plein centre de Ruffec (16)</span></div>
+  </div>
+
+  <section id="selection">
+    <div class="wrap">
+      <div class="sec-head">
+        <span class="tag-label">Ce qu'on d&#233;niche pour vous</span>
+        <h2>Un magasin de jouets, <span class="u">version collectionneur</span></h2>
+        <p>Du neuf, de la seconde main, et des pi&#232;ces qu'on ne trouve plus ailleurs. On chine, on trie, on remet en rayon &#8212; vous n'avez plus qu'&#224; pousser la porte.</p>
+      </div>
+      <div class="bento">
+        <div class="tile g big">
+          <span class="n">01</span>
+          <h3>Funko Pop &amp; figurines</h3>
+          <p>S&#233;ries, films, jeux vid&#233;o, &#233;ditions limit&#233;es et exclus. Le mur de Pop, c'est chez nous.</p>
+        </div>
+        <div class="tile b">
+          <span class="n">02</span>
+          <h3>Cartes Pok&#233;mon</h3>
+          <p>Boosters, displays, cartes &#224; l'unit&#233; et classeurs.</p>
+        </div>
+        <div class="tile y">
+          <span class="n">03</span>
+          <h3>Mangas &amp; comics</h3>
+          <p>S&#233;ries en cours, tomes isol&#233;s, coups de c&#339;ur.</p>
+        </div>
+        <div class="tile p big">
+          <span class="n">04</span>
+          <h3>Jouets r&#233;tro &amp; vintage</h3>
+          <p>Les jouets de votre enfance, chin&#233;s et v&#233;rifi&#233;s : Playmobil, Lego, He-Man, figurines cartonn&#233;es, Game Boy, bo&#238;tes d'&#233;poque.</p>
+        </div>
+        <div class="tile r">
+          <span class="n">05</span>
+          <h3>Sacs &amp; peluches</h3>
+          <p>Loungefly, peluches, mugs, porte-cl&#233;s, cadeaux.</p>
+        </div>
+        <div class="tile b">
+          <span class="n">06</span>
+          <h3>On rach&#232;te aussi</h3>
+          <p>Un carton de jouets &#224; faire partir ? Passez nous voir.</p>
+        </div>
+      </div>
+      <div class="slideshow">
+        <div class="frame">
+          <span class="counter" id="ssCount">1 / 4</span>
+          <button class="nav prev" id="ssPrev" type="button" aria-label="Photo pr&#233;c&#233;dente">&#8249;</button>
+          <button class="nav next" id="ssNext" type="button" aria-label="Photo suivante">&#8250;</button>
+          <div class="slides" id="ssSlides" aria-live="polite">
+            <figure class="on">
+              <img src="assets/s1.jpg" alt="La devanture de RePOP, 24 place d'Armes &#224; Ruffec" width="1120" height="700" loading="lazy">
+              <figcaption>La devanture, place d'Armes.</figcaption>
+            </figure>
+            <figure>
+              <img src="assets/s2.jpg" alt="Int&#233;rieur de RePOP : mur de Funko Pop, sacs Loungefly, peluches et vitrine de cartes Pok&#233;mon" width="1120" height="700" loading="lazy">
+              <figcaption>Le mur de Pop, les sacs, la vitrine cartes.</figcaption>
+            </figure>
+            <figure>
+              <img src="assets/s3.jpg" alt="Int&#233;rieur de RePOP : figurines vintage sous blister, v&#233;hicules Batman et Playmobil" width="1120" height="700" loading="lazy">
+              <figcaption>La zone vintage : blisters d'&#233;poque et raret&#233;s.</figcaption>
+            </figure>
+            <figure>
+              <img src="assets/s4.jpg" alt="Une pi&#232;ce en rayon chez RePOP : poup&#233;e Chucky en bo&#238;te sur le comptoir" width="1120" height="700" loading="lazy">
+              <figcaption>Des pi&#232;ces qu'on ne trouve plus ailleurs.</figcaption>
+            </figure>
+          </div>
+        </div>
+        <div class="dots" id="ssDots" role="tablist" aria-label="Choisir une photo"></div>
+      </div>
+    </div>
+  </section>
+
+  <section id="events">
+    <div class="wrap">
+      <div class="sec-head">
+        <span class="tag-label">Plus qu'un magasin</span>
+        <h2>Le <span class="u">point de rendez-vous</span> des collectionneurs de Ruffec</h2>
+        <p>RePOP, c'est aussi des rendez-vous r&#233;guliers autour du jeu et de la collection.</p>
+      </div>
+      <div class="events">
+        <div class="ev">
+          <span class="burst">Tournoi</span>
+          <h3>D&#233;fi de Ligue Pok&#233;mon</h3>
+          <p>Le premier tournoi organis&#233; &#224; la boutique &#8212; dimanche 20 septembre.</p>
+        </div>
+        <div class="ev">
+          <span class="burst">Rencontre</span>
+          <h3>Bourse d'&#233;changes</h3>
+          <p>Ramenez vos doubles, repartez avec les cartes qui manquent au deck.</p>
+        </div>
+        <div class="ev">
+          <span class="burst">Chaque semaine</span>
+          <h3>Nouveaux arrivages</h3>
+          <p>Le programme est affich&#233; en boutique et post&#233; sur Instagram et Facebook.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="visite">
+    <div class="wrap">
+      <div class="visit-grid">
+        <div class="visit-copy">
+          <span class="tag-label" style="color:var(--green-deep)">Passer nous voir</span>
+          <h2>Au c&#339;ur de Ruffec, <span class="u">place d'Armes</span></h2>
+          <p>La boutique est en plein centre, face &#224; la place, entre la mercerie et la pizzeria. Poussez la porte pour fouiller les rayons : c'est l&#224; qu'on trouve les meilleures surprises.</p>
+          <span class="owners"><i aria-hidden="true"></i>Laura &amp; Anthony vous accueillent</span>
+          <div class="stars">Not&#233; <b>5,0&nbsp;&#9733;</b> sur Google &#183; 21 avis</div>
+          <div><a class="btn go" href="https://www.google.com/maps/place/RePOP/@46.0278639,0.1989911,17z/data=!3m1!4b1!4m6!3m5!1s0x47fe1132deb40e01:0x61e619c7f6a83cda!8m2!3d46.0278639!4d0.1989911!16s%2Fg%2F11whb8r5g1" target="_blank" rel="noopener">Ouvrir l'itin&#233;raire</a></div>
+        </div>
+        <div class="ticket">
+          <div class="head">RePOP boutique</div>
+          <div class="body">
+            <dl>
+              <div class="line"><dt>Adresse</dt><dd>24 place d'Armes<br>16700 Ruffec</dd></div>
+              <div class="line"><dt>Horaires</dt><dd>Du lundi au samedi<br>10h &#8211; 19h</dd></div>
+              <div class="line"><dt>T&#233;l</dt><dd><a href="tel:+33677037878">06 77 03 78 78</a></dd></div>
+              <div class="line"><dt>E-mail</dt><dd><a href="mailto:repop.boutique@gmail.com">repop.boutique@gmail.com</a></dd></div>
+              <div class="line"><dt>Web</dt><dd><a href="https://www.instagram.com/repop.boutique" target="_blank" rel="noopener">@repop.boutique</a></dd></div>
+            </dl>
+          </div>
+          <p class="note">Pensez &#224; v&#233;rifier les fermetures exceptionnelles et jours f&#233;ri&#233;s sur la page Facebook.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <div class="wrap foot">
+    <div class="socials">
+      <a href="https://www.instagram.com/repop.boutique" target="_blank" rel="noopener">Instagram</a>
+      <a href="https://www.facebook.com/people/Repop-boutique/61568154238446/" target="_blank" rel="noopener">Facebook</a>
+      <a href="tel:+33677037878">Appeler</a>
+      <a href="mailto:repop.boutique@gmail.com">&#201;crire</a>
+    </div>
+    <div class="meta">RePOP boutique &#183; 24 place d'Armes, 16700 Ruffec &#183; jouets &amp; pop culture</div>
+  </div>
+</footer>
+
+<script>
+  (function () {
+    var slides = Array.prototype.slice.call(document.querySelectorAll('#ssSlides figure'));
+    if (!slides.length) return;
+    var dotsWrap = document.getElementById('ssDots');
+    var count = document.getElementById('ssCount');
+    var i = 0, timer = null;
+    var reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+    slides.forEach(function (_, n) {
+      var b = document.createElement('button');
+      b.type = 'button';
+      b.setAttribute('role', 'tab');
+      b.setAttribute('aria-label', 'Photo ' + (n + 1));
+      b.addEventListener('click', function () { go(n); restart(); });
+      dotsWrap.appendChild(b);
+    });
+    var dots = Array.prototype.slice.call(dotsWrap.children);
+
+    function go(n) {
+      i = (n + slides.length) % slides.length;
+      slides.forEach(function (f, k) { f.classList.toggle('on', k === i); });
+      dots.forEach(function (d, k) { d.setAttribute('aria-current', k === i ? 'true' : 'false'); });
+      count.textContent = (i + 1) + ' / ' + slides.length;
+    }
+    function next() { go(i + 1); }
+    function prev() { go(i - 1); }
+    function restart() {
+      if (reduce) return;
+      clearInterval(timer);
+      timer = setInterval(next, 4200);
+    }
+
+    document.getElementById('ssNext').addEventListener('click', function () { next(); restart(); });
+    document.getElementById('ssPrev').addEventListener('click', function () { prev(); restart(); });
+    var frame = document.querySelector('.slideshow .frame');
+    frame.addEventListener('mouseenter', function () { clearInterval(timer); });
+    frame.addEventListener('mouseleave', restart);
+
+    go(0);
+    restart();
+  })();
+</script>
