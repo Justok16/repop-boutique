@@ -85,6 +85,25 @@ Onglet **Analytics** du projet sur vercel.com. Le script de suivi est déjà dan
 - [ ] (Optionnel) nom de domaine personnalisé (ex. `repop.boutique`, ~4 $/an) —
       à acheter puis brancher dans Vercel → Settings → Domains, et mettre à jour
       les URL `canonical` / `og:url` / `sitemap.xml` dans le code.
+- [ ] **Mentions légales** : compléter la forme juridique et le n° SIRET dans le
+      bloc « Mentions légales » en bas de page (`index.html`, section `<details class="legal">`).
+
+### Décisions éditoriales en attente (audit externe de sept. 2026)
+
+Un audit fait par une autre IA a soulevé ces points ; volontairement laissés
+de côté pour l'instant, à trancher par les propriétaires :
+
+- [ ] Repositionner le message d'accueil : le ton actuel (« version collectionneur »)
+      met surtout en avant Funko/Pokémon/vintage, alors que l'offre réelle est
+      plus large (jouets classiques, jeux de société, cadeaux...).
+- [ ] Ajouter un bloc « Nouveautés / Arrivages de la semaine » avec des photos
+      récentes — demande une mise à jour régulière, pas un contenu figé.
+- [ ] Préciser les conditions de reprise/rachat (espèces ou bon d'achat ?
+      sur rendez-vous ?) — actuellement volontairement vague, faute d'info.
+- [ ] Confirmer stationnement à proximité et accès PMR.
+- [ ] Vérifier une mention trouvée sur une ancienne page de la mairie de Ruffec
+      indiquant une adresse différente (« 5 place Aristide Briand ») pour un
+      magasin de jouets — probablement un autre commerce, à vérifier par prudence.
 
 ---
 
