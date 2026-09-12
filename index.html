@@ -3,13 +3,12 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>RePOP boutique — magasin de jouets & pop culture à Ruffec (Nord Charente)</title>
+<title>RePOP boutique — jouets, Pokémon & pop culture à Ruffec</title>
 <meta name="description" content="Magasin de jouets & pop culture à Ruffec, en Nord Charente : Funko Pop, cartes Pokémon, jouets rétro & vintage, mangas, sacs Loungefly. Neuf et seconde main, à 30 min de Civray, Chef-Boutonne, Mansle et Villefagnan. Ouvert du lundi au samedi.">
 <link rel="canonical" href="https://repop-boutique.vercel.app/">
 <meta name="robots" content="index, follow">
 <meta name="theme-color" content="#12923a">
 <meta name="author" content="RePOP boutique">
-<meta name="keywords" content="magasin de jouets Ruffec, Funko Pop Ruffec, cartes Pokémon Ruffec, jouets vintage Charente, jouets d'occasion Nord Charente, mangas Ruffec, boutique pop culture Civray Chef-Boutonne Mansle">
 <meta name="geo.placename" content="Ruffec, Charente">
 <meta name="geo.region" content="FR-16">
 <meta name="geo.position" content="46.0278639;0.1989911">
@@ -17,7 +16,7 @@
 
 <meta property="og:type" content="business.business">
 <meta property="og:site_name" content="RePOP boutique">
-<meta property="og:title" content="RePOP boutique — magasin de jouets & pop culture à Ruffec (Nord Charente)">
+<meta property="og:title" content="RePOP boutique — jouets, Pokémon & pop culture à Ruffec">
 <meta property="og:description" content="Magasin de jouets & pop culture à Ruffec, en Nord Charente : Funko Pop, cartes Pokémon, jouets rétro & vintage, mangas, sacs Loungefly. Neuf et seconde main, à 30 min de Civray, Chef-Boutonne, Mansle et Villefagnan. Ouvert du lundi au samedi.">
 <meta property="og:url" content="https://repop-boutique.vercel.app/">
 <meta property="og:image" content="https://repop-boutique.vercel.app/assets/shop.jpg">
@@ -32,7 +31,7 @@
 <meta property="business:contact_data:phone_number" content="+33677037878">
 
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:title" content="RePOP boutique — magasin de jouets & pop culture à Ruffec (Nord Charente)">
+<meta name="twitter:title" content="RePOP boutique — jouets, Pokémon & pop culture à Ruffec">
 <meta name="twitter:description" content="Magasin de jouets & pop culture à Ruffec, en Nord Charente : Funko Pop, cartes Pokémon, jouets rétro & vintage, mangas, sacs Loungefly. Neuf et seconde main, à 30 min de Civray, Chef-Boutonne, Mansle et Villefagnan. Ouvert du lundi au samedi.">
 <meta name="twitter:image" content="https://repop-boutique.vercel.app/assets/shop.jpg">
 
@@ -102,6 +101,8 @@
   }
 
   * { box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+  @media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } }
 
   body {
     margin: 0;
@@ -148,6 +149,7 @@
   .brand .c { color: var(--yellow); }
   .brand .d { color: var(--blue); }
   .brand .e { color: var(--red); }
+  .nav-group { display: flex; align-items: center; gap: 10px; }
   .navlinks { display: flex; align-items: center; gap: 5px; flex-wrap: wrap; justify-content: flex-end; }
   .navlinks a {
     font-family: "Fredoka", sans-serif;
@@ -155,18 +157,34 @@
     padding: 8px 13px; border-radius: 8px; white-space: nowrap;
   }
   .navlinks a:hover { background: #ffffff26; }
-  .navlinks a.call {
-    background: var(--green); color: #fff;
-    border: 2.5px solid var(--paper); font-weight: 700;
-    box-shadow: 3px 3px 0 var(--green-deep);
+  .call {
+    font-family: "Fredoka", sans-serif; font-size: 16px; font-weight: 700;
+    text-decoration: none; color: #fff; white-space: nowrap;
+    background: var(--green); padding: 8px 13px; border-radius: 8px;
+    border: 2.5px solid var(--paper); box-shadow: 3px 3px 0 var(--green-deep);
   }
-  .navlinks a.call:hover { background: var(--yellow); color: var(--ink); box-shadow: 3px 3px 0 #0004; }
+  .call:hover { background: var(--yellow); color: var(--ink); box-shadow: 3px 3px 0 #0004; }
+  .menu-btn {
+    display: none; flex: none; width: 38px; height: 38px; border-radius: 8px;
+    align-items: center; justify-content: center;
+    background: transparent; border: 2px solid var(--paper); color: var(--paper);
+    font-size: 18px; line-height: 1; cursor: pointer;
+  }
+  .menu-btn:hover { background: #ffffff26; }
   @media (max-width: 820px) {
+    .topbar { position: sticky; }
     .topbar .row { padding: 11px 0; }
     .brand { font-size: 24px; }
-    .navlinks { gap: 6px; }
-    .navlinks a:not(.call) { display: none; }
-    .navlinks a.call { font-size: 15px; padding: 9px 14px; }
+    .call { font-size: 14px; padding: 8px 11px; }
+    .menu-btn { display: flex; }
+    .navlinks {
+      display: none; position: absolute; left: 0; right: 0; top: 100%;
+      flex-direction: column; align-items: stretch; gap: 2px;
+      background: var(--ink); border-bottom: 5px solid var(--yellow);
+      padding: 6px 20px 16px; justify-content: flex-start;
+    }
+    .navlinks.open { display: flex; }
+    .navlinks a { padding: 12px 8px; }
   }
 
   /* ---------------- hero ---------------- */
@@ -218,10 +236,16 @@
   .hero .logo-wrap img {
     width: 100%; height: 100%; object-fit: cover; display: block;
   }
+  .hero h1 {
+    margin: 22px auto 0; max-width: 23ch;
+    font-family: "Fredoka", sans-serif; font-weight: 700;
+    font-size: clamp(24px, 4.6vw, 34px); line-height: 1.15; color: var(--ink);
+  }
+  .hero h1 .accent { display: block; font-size: .6em; font-weight: 500; color: var(--muted); margin-top: 4px; }
   .hero .sub {
-    max-width: 26ch; margin: 24px auto 0;
+    max-width: 26ch; margin: 14px auto 0;
     font-family: "Fredoka", sans-serif; font-weight: 600;
-    font-size: clamp(19px, 3vw, 27px); color: var(--ink);
+    font-size: clamp(17px, 2.6vw, 22px); color: var(--ink);
   }
   .cta-row { display: flex; flex-wrap: wrap; gap: 13px; justify-content: center; margin-top: 22px; }
   .btn {
@@ -380,6 +404,10 @@
   .stars b { color: var(--green-deep); font-family: "Fredoka", sans-serif; font-weight: 700; }
   .visit-copy .cta { margin-top: 24px; }
   .visit-copy .cta .btn { margin-top: 0; }
+  .map-embed {
+    width: 100%; height: 220px; margin-top: 18px; border: 3px solid var(--line);
+    border-radius: 14px; box-shadow: var(--offset) var(--offset) 0 var(--line);
+  }
 
   .ticket {
     background: var(--paper-2); border: 3px solid var(--line); border-radius: 14px;
@@ -409,6 +437,10 @@
   }
   .foot .socials a:hover { background: var(--yellow); }
   .foot .meta { font-family: "DM Mono", monospace; font-size: 12px; color: var(--muted); }
+  .legal { margin-top: 18px; font-size: 12.5px; color: var(--muted); }
+  .legal summary { cursor: pointer; font-weight: 600; color: var(--ink); }
+  .legal p { max-width: 62ch; line-height: 1.6; margin: 10px 0 0; }
+  .legal em { font-style: normal; text-decoration: underline dotted; }
   .visit-copy .zone { font-size: 13.5px; margin-top: 12px; }
   .visit-copy .zone b { color: var(--ink); }
 
@@ -523,7 +555,6 @@
       "geoRadius": 30000
     }
   ],
-  "keywords": "magasin de jouets Ruffec, pop culture, Funko Pop, cartes Pokémon, jouets vintage, jouets d'occasion, mangas, sacs Loungefly, Nord Charente, Sud Vienne, Ruffécois",
   "openingHoursSpecification": [
     {
       "@type": "OpeningHoursSpecification",
@@ -552,15 +583,18 @@
 <header class="topbar">
   <div class="wrap row">
     <a class="brand" href="#top"><span class="a">R</span><span class="b">e</span><span class="c">P</span><span class="d">O</span><span class="e">P</span></a>
-    <nav class="navlinks">
-      <a href="#selection">La s&#233;lection</a>
-      <a href="#events">&#201;v&#233;nements</a>
-      <a href="#visite">Passer nous voir</a>
-      <a href="https://www.instagram.com/repop.boutique" target="_blank" rel="noopener">Instagram</a>
-      <a href="https://www.tiktok.com/@repop.boutique" target="_blank" rel="noopener">TikTok</a>
-      <a href="https://www.vinted.fr/member/229801773-repopboutique" target="_blank" rel="noopener">Vinted</a>
+    <div class="nav-group">
+      <nav class="navlinks" id="navlinks">
+        <a href="#selection">La s&#233;lection</a>
+        <a href="#events">&#201;v&#233;nements</a>
+        <a href="#visite">Passer nous voir</a>
+        <a href="https://www.instagram.com/repop.boutique" target="_blank" rel="noopener">Instagram</a>
+        <a href="https://www.tiktok.com/@repop.boutique" target="_blank" rel="noopener">TikTok</a>
+        <a href="https://www.vinted.fr/member/229801773-repopboutique" target="_blank" rel="noopener">Vinted</a>
+      </nav>
       <a class="call" href="tel:+33677037878">06 77 03 78 78</a>
-    </nav>
+      <button class="menu-btn" id="menuBtn" type="button" aria-expanded="false" aria-controls="navlinks" aria-label="Ouvrir le menu">&#9776;</button>
+    </div>
   </div>
 </header>
 
@@ -572,8 +606,9 @@
     <div class="cloud c2" aria-hidden="true"><i></i></div>
     <div class="cloud c3" aria-hidden="true"><i></i></div>
     <div class="wrap inner">
-      <div class="logo-wrap"><img src="assets/logo.jpg" alt="Logo RePOP boutique : jouets, pop culture, seconde main, neuf et vintage &#8212; 24 place d'Armes, 16700 Ruffec, du lundi au samedi de 10h &#224; 19h"></div>
-      <p class="sub">Pour les enfants &#8212; ou pour retomber en enfance.</p>
+      <div class="logo-wrap"><img width="768" height="768" src="assets/logo.jpg" alt="RePOP boutique &#8212; jouets, pop culture et seconde main &#224; Ruffec"></div>
+      <h1>RePOP boutique<span class="accent">Jouets, Pok&#233;mon &amp; pop culture &#224; Ruffec</span></h1>
+      <p class="sub">Neuf, seconde main &amp; vintage &#8212; pour les enfants ou pour retomber en enfance.</p>
       <div class="cta-row">
         <a class="btn go" href="#visite">Passer nous voir</a>
         <a class="btn alt" href="https://www.instagram.com/repop.boutique" target="_blank" rel="noopener">Suivre @repop.boutique</a>
@@ -630,34 +665,31 @@
         <div class="tile b">
           <span class="n">06</span>
           <h3>On rach&#232;te aussi</h3>
-          <p>Un carton de jouets &#224; faire partir ? Passez nous voir.</p>
+          <p>Un carton de jouets, figurines ou cartes &#224; faire partir&nbsp;? Passez en discuter en boutique, on regarde ensemble ce qu'on peut reprendre.</p>
         </div>
       </div>
       <div class="slideshow">
         <div class="frame">
-          <span class="counter" id="ssCount">1 / 4</span>
+          <span class="counter" id="ssCount">1 / 3</span>
           <button class="nav prev" id="ssPrev" type="button" aria-label="Photo pr&#233;c&#233;dente">&#8249;</button>
           <button class="nav next" id="ssNext" type="button" aria-label="Photo suivante">&#8250;</button>
           <div class="slides" id="ssSlides" aria-live="polite">
+            
             <figure class="on">
-              <img src="assets/s1.jpg" alt="La devanture de RePOP, 24 place d'Armes &#224; Ruffec" width="1120" height="700" loading="lazy">
-              <figcaption>La devanture, place d'Armes.</figcaption>
-            </figure>
-            <figure>
-              <img src="assets/s2.jpg" alt="Int&#233;rieur de RePOP : mur de Funko Pop, sacs Loungefly, peluches et vitrine de cartes Pok&#233;mon" width="1120" height="700" loading="lazy">
+              <img src="assets/s1.jpg" alt="Int&#233;rieur de RePOP : mur de Funko Pop, sacs Loungefly, peluches et vitrine de cartes Pok&#233;mon" width="1120" height="700" loading="lazy">
               <figcaption>Le mur de Pop, les sacs, la vitrine cartes.</figcaption>
             </figure>
             <figure>
-              <img src="assets/s3.jpg" alt="Int&#233;rieur de RePOP : figurines vintage sous blister, v&#233;hicules Batman et Playmobil" width="1120" height="700" loading="lazy">
+              <img src="assets/s2.jpg" alt="Int&#233;rieur de RePOP : figurines vintage sous blister, v&#233;hicules Batman et Playmobil" width="1120" height="700" loading="lazy">
               <figcaption>La zone vintage : blisters d'&#233;poque et raret&#233;s.</figcaption>
             </figure>
             <figure>
-              <img src="assets/s4.jpg" alt="Une pi&#232;ce en rayon chez RePOP : poup&#233;e Chucky en bo&#238;te sur le comptoir" width="1120" height="700" loading="lazy">
+              <img src="assets/s3.jpg" alt="Une pi&#232;ce en rayon chez RePOP : poup&#233;e Chucky en bo&#238;te sur le comptoir" width="1120" height="700" loading="lazy">
               <figcaption>Des pi&#232;ces qu'on ne trouve plus ailleurs.</figcaption>
             </figure>
           </div>
         </div>
-        <div class="dots" id="ssDots" role="tablist" aria-label="Choisir une photo"></div>
+        <div class="dots" id="ssDots" aria-label="Choisir une photo"></div>
       </div>
     </div>
   </section>
@@ -699,7 +731,9 @@
           <p class="zone">On voit venir des client&#183;e&#183;s de tout le <b>Nord Charente</b> et du sud de la Vienne : Civray, Chef-Boutonne, Mansle, Villefagnan, Aigre, Verteuil-sur-Charente, Nanteuil-en-Vall&#233;e, Charroux, Sauz&#233;-Vaussais, Chaunay&#8230; tous &#224; moins de 30&#160;min.</p>
           <span class="owners"><i aria-hidden="true"></i>Laura &amp; Anthony vous accueillent</span>
           <div class="stars">Not&#233; <b>5,0&nbsp;&#9733;</b> sur Google &#183; 21 avis</div>
-          <div class="cta"><a class="btn go" href="https://www.google.com/maps/place/RePOP/@46.0278639,0.1989911,17z/data=!3m1!4b1!4m6!3m5!1s0x47fe1132deb40e01:0x61e619c7f6a83cda!8m2!3d46.0278639!4d0.1989911!16s%2Fg%2F11whb8r5g1" target="_blank" rel="noopener">Ouvrir l'itin&#233;raire</a></div>
+          <div class="cta"><a class="btn go" href="https://www.google.com/maps/dir/?api=1&amp;destination=46.0278639,0.1989911" target="_blank" rel="noopener">&#128205; Itin&#233;raire (GPS)</a></div>
+          <iframe class="map-embed" title="Localisation de RePOP boutique sur Google Maps" loading="lazy" referrerpolicy="no-referrer-when-downgrade"
+            src="https://www.google.com/maps?q=RePOP+boutique+24+place+d%27Armes+16700+Ruffec&amp;z=16&amp;output=embed"></iframe>
         </div>
         <div class="ticket">
           <div class="head">RePOP boutique</div>
@@ -731,9 +765,33 @@
     </div>
     <div class="meta">RePOP boutique &#183; 24 place d'Armes, 16700 Ruffec &#183; Nord Charente / Sud Vienne</div>
   </div>
+  <div class="wrap">
+    <details class="legal">
+      <summary>Mentions l&#233;gales</summary>
+      <p><strong>&#201;diteur du site&nbsp;:</strong> RePOP boutique &#8212; Laura &amp; Anthony <em>[forme juridique et num&#233;ro SIRET &#224; compl&#233;ter]</em><br>
+      24 place d'Armes, 16700 Ruffec, France &#8212; <a href="tel:+33677037878">06 77 03 78 78</a> &#8212; <a href="mailto:repop.boutique@gmail.com">repop.boutique@gmail.com</a></p>
+      <p><strong>Directeur de la publication&nbsp;:</strong> Laura &amp; Anthony, g&#233;rants de RePOP boutique.</p>
+      <p><strong>H&#233;bergement&nbsp;:</strong> Vercel Inc., 340 S Lemon Ave #4133, Walnut, CA 91789, &#201;tats-Unis &#8212; <a href="https://vercel.com" target="_blank" rel="noopener">vercel.com</a></p>
+      <p><strong>Donn&#233;es de fr&#233;quentation&nbsp;:</strong> ce site utilise Vercel Web Analytics, un outil de mesure d'audience qui ne d&#233;pose pas de cookie et ne collecte aucune donn&#233;e personnelle identifiable.</p>
+    </details>
+  </div>
 </footer>
 
 <script>
+  (function () {
+    var btn = document.getElementById('menuBtn');
+    var nav = document.getElementById('navlinks');
+    if (!btn || !nav) return;
+    function close() { nav.classList.remove('open'); btn.setAttribute('aria-expanded', 'false'); }
+    function toggle() {
+      var open = nav.classList.toggle('open');
+      btn.setAttribute('aria-expanded', open ? 'true' : 'false');
+    }
+    btn.addEventListener('click', toggle);
+    nav.querySelectorAll('a').forEach(function (a) { a.addEventListener('click', close); });
+    document.addEventListener('keydown', function (e) { if (e.key === 'Escape') close(); });
+  })();
+</script>
   (function () {
     var slides = Array.prototype.slice.call(document.querySelectorAll('#ssSlides figure'));
     if (!slides.length) return;
@@ -745,7 +803,6 @@
     slides.forEach(function (_, n) {
       var b = document.createElement('button');
       b.type = 'button';
-      b.setAttribute('role', 'tab');
       b.setAttribute('aria-label', 'Photo ' + (n + 1));
       b.addEventListener('click', function () { go(n); restart(); });
       dotsWrap.appendChild(b);
