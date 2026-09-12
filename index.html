@@ -790,6 +790,9 @@
     btn.addEventListener('click', toggle);
     nav.querySelectorAll('a').forEach(function (a) { a.addEventListener('click', close); });
     document.addEventListener('keydown', function (e) { if (e.key === 'Escape') close(); });
+    document.addEventListener('click', function (e) {
+      if (nav.classList.contains('open') && !nav.contains(e.target) && e.target !== btn) close();
+    });
   })();
 </script>
 <script>
